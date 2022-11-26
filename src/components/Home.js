@@ -83,7 +83,6 @@ function Home(data, load) {
   
       return setPermission(newArr);
     };
-
   return (
     <>
         <h2 className="ms-3">Facebook messenger</h2> 
@@ -105,7 +104,7 @@ function Home(data, load) {
                     appId="843134683665169"
                     autoLoad={true}
                     fields="name,email,picture"
-                    scope="public_profile, pages_show_list"
+                    scope={permission}
                     callback={responseFacebook}
                     render={renderProps => (
                     <Button className='m-2 btn btn-warning'  onClick={renderProps.onClick}> + Add Facebook pages</Button>
