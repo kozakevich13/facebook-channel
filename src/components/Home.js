@@ -5,10 +5,12 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import Modal from 'react-modal';
 import ListPermission from "./ListPermission";
 import Form from "./Form";
+import { useTranslation } from "react-i18next";
 
 
 
 function Home(data, load) {
+    const { t } = useTranslation();
     const arrayPermission = [
         { name: "public_profile"},
         { name: "pages_show_list"},
@@ -85,14 +87,14 @@ function Home(data, load) {
     };
   return (
     <>
-        <h2 className="ms-3">Facebook messenger</h2> 
-        <p className="ms-3">Conect</p>
+        <h2 className="ms-3">{t("facebook")}</h2> 
+        <p className="ms-3">{t("conect")}</p>
         <hr/>
-        <p className="fw-bold ms-3">Edit</p>
+        <p className="fw-bold ms-3">{t("edit")}</p>
         <div className="d-flex">
             <div className="w-75 p-3 ">
                 <div className="border-bottom bg-light bg-gradient p-3">
-                    CONNECTED FACEBOOK PAGE
+                    {t("conect_facebook")}
                 </div>
                 <ul className="list-group">{pages.data?.map((d) => <li className="list-group-item list-group-item-action d-flex " key={d.id}>{d.name}
                 <div className="form-check form-switch position-absolute top-0 end-0 mt-2">
@@ -107,15 +109,15 @@ function Home(data, load) {
                     scope={permission}
                     callback={responseFacebook}
                     render={renderProps => (
-                    <Button className='m-2 btn btn-warning'  onClick={renderProps.onClick}> + Add Facebook pages</Button>
+                    <Button className='m-2 btn btn-warning'  onClick={renderProps.onClick}>{t("add_fb_pages")}</Button>
                 )}
                 />
                  <input className="btn btn-warning" type="button" value="Permission" onClick={openModal} />
                  <Modal isOpen={isOpen} onRequestClose={closeModal}>
-                    <p className="fw-bold ms-3">All permission</p>
+                    <p className="fw-bold ms-3">{t("all_permision")}</p>
                     <input className="btn btn-warning" type="button" value="Back" onClick={closeModal} />
                     <div>
-                        <p>new permission</p>
+                        <p>{t("new_permison")}</p>
                     </div>
 
                     <div>
@@ -140,8 +142,8 @@ function Home(data, load) {
             <div className="col-md-4 m-2 h-5 border rounded">
                 {picture ? <img className="img-thumbnail d-block me-auto ms-auto mt-5" alt="logo" src={picture} /> : null}
                 <p className="text-center">{data.data.name}</p>
-                <p className="text-center text-secondary">Connected account</p>
-                <Button className='m-2 d-block me-auto ms-auto' variant="outline-warning" onClick={disconnect}>Disconnect</Button>
+                <p className="text-center text-secondary">{t("connected_accounts")}</p>
+                <Button className='m-2 d-block me-auto ms-auto' variant="outline-warning" onClick={disconnect}>{t("disconnect")}</Button>
             </div>
         
         </div>
