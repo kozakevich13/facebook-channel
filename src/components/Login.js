@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login() {
 
-    const [data, setData] = useState(JSON.parse(sessionStorage.getItem('data')))
+    const [data, setData] = useState(JSON.parse(sessionStorage.getItem('data')) || null)
     const [isLoggedin, setIsLoggedin] = useState(false)
 
     useEffect(()=>{
@@ -15,7 +15,7 @@ function Login() {
         }
     },[data])
   
-
+    
     function responseFacebook(response) {
         setIsLoggedin(true)
         setData(response)
@@ -23,7 +23,7 @@ function Login() {
     }
 
     return (
-        isLoggedin ? <Home data={data}/> : (
+        isLoggedin ? <Home data={data} /> : (
         <div className="App mx-auto mt-5 w-50 p-3 border rounded">
             <h2>Facebook messenger</h2> 
             <p>Conect</p>

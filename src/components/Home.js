@@ -3,11 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-import Login from "./Login";
 
 
 
-function Home(data) {
+function Home(data, load) {
 
     const [picture, setPicture] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png')
     const [userId, setUserId] = useState(0)
@@ -48,7 +47,8 @@ function Home(data) {
     }
 
     const disconnect = () => {
-        <Link path="/"></Link>
+        sessionStorage.setItem('data', JSON.stringify(''));
+        window.location.reload()
     }
 
   return (
