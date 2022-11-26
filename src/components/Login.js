@@ -31,7 +31,7 @@ function Login() {
             <h4>Add account</h4>
             <FacebookLogin
             appId="843134683665169"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
             scope="public_profile, pages_show_list"
             callback={responseFacebook}
