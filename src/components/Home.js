@@ -25,6 +25,9 @@ function Home(data, load) {
     const closeModal = useCallback(() => setIsOpen(false), []);
     const [permission, setPermission] = useState(arrayPermission);
     const [inputValue, setInputValue] = useState("");
+
+    let whats_app_business_account_id = "100850302872958"
+
    
     useEffect(() => {
       setPicture(data.data.picture.data.url)  
@@ -33,7 +36,7 @@ function Home(data, load) {
     },[]);
 
     async function fetchData() {
-        const url = `https://graph.facebook.com/${userId}/accounts?access_token=${access_token}`;
+        const url = `https://graph.facebook.com/${whats_app_business_account_id}?access_token=${access_token}`;
 
         fetch(url, {
             method: "GET",
@@ -45,6 +48,7 @@ function Home(data, load) {
             .then(resp => resp.json())
             .then(function(data) {
                 setPages(data)
+                console.log(data)
             })
             .catch(function(error) {
             });
