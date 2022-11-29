@@ -22,12 +22,7 @@ function Login() {
         setIsLoggedin(true)
         setData(response)
         sessionStorage.setItem('data', JSON.stringify(response));
-        console.log(response.accessToken)
-        console.log(response.id)
-
-
     }
-
 
     return (
         isLoggedin ? <Home data={data} /> : (
@@ -37,10 +32,10 @@ function Login() {
             <hr/>
             <h4>{t("add_account")}</h4>
             <FacebookLogin
-            appId="688287189334218"
+            appId="843134683665169"
             autoLoad={false}
             fields="name,email,picture"
-            scope="public_profile, pages_show_list, whatsapp_business_messaging, pages_read_engagement, whatsapp_business_management"
+            scope="public_profile, pages_show_list"
             callback={responseFacebook}
             render={renderProps => (
                 <Button className='m-2' variant="outline-warning" onClick={renderProps.onClick}>{t("connect_fb_account")}</Button>
